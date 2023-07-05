@@ -1,4 +1,4 @@
-parameters:
-    level: 1
-    paths:
-        - src
+ test:
+    needs: composer require --dev phpstan/phpstan
+    steps:
+      - run: vendor/bin/phpstan analyse .

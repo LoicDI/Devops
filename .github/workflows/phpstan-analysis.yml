@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} vient de push sur la master !
 on:
   push:
     branches:
-      - origin
+      - master
 
 jobs:
   build-and-code-review:

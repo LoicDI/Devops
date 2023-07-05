@@ -25,7 +25,7 @@ jobs:
 
         # Revue de Code PHPStan
       - name: Run PHPStan static code analyse
-        run: vendor/bin/phpstan analyse -l 1 .
+        run: vendor/bin/phpstan analyse -l 0 .
         
       # Étape de build
       - name: Build

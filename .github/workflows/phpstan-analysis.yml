@@ -1,8 +1,28 @@
-name: learn-github-actions
-on: [push]
+name: phpstan-analysis
+run-name: ${{ github.actor }} vient de push sur la master !
+on:
+  push:
+    branches:
+      - origin
+
 jobs:
+  build-and-code-review:
     runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-          - run: composer require --dev phpstan/phpstan
-          - run: vendor/bin/phpstan analyse .
+
+    steps:
+      # Récupération du code pour faire les actions
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+        # Config environnement build + installation dépendances
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1.10"
+
+      - name: Install dependencies
+        run: composer install
+
+        # Revue de Code PHPStan
+      - name: Run PHPStan static code analyse
+        run: vendor/bin/phpstan analyse -l 1 .

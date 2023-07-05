@@ -26,3 +26,11 @@ jobs:
         # Revue de Code PHPStan
       - name: Run PHPStan static code analyse
         run: vendor/bin/phpstan analyse -l 1 .
+        
+      # Étape de build
+      - name: Build
+        run: echo "Build app image"
+
+      # Étape de déploiement
+      - name: Deploy
+        run: echo "Deploy project"

@@ -21,7 +21,7 @@ jobs:
           php-version: "8.1.10"
 
       - name: Install dependencies
-        run: composer install
+        run: composer require --dev phpstan/phpstan
 
         # Revue de Code PHPStan
       - name: Run PHPStan static code analyse

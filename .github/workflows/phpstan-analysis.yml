@@ -1,4 +1,8 @@
- test:
-    needs: composer require --dev phpstan/phpstan
-    steps:
-      - run: vendor/bin/phpstan analyse .
+name: learn-github-actions
+on: [push]
+jobs:
+    runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - run: composer require --dev phpstan/phpstan
+          - run: vendor/bin/phpstan analyse .

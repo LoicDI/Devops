@@ -52,12 +52,12 @@ jobs:
       - name: Deploy project
         run: echo "Deploy project"
 
-     - name: Launch Docker container
-        uses: docker/cli-action@v2
-        with:
-          command: run
-          args: |
-            -d
-            -p 8081:80
-            --name website
-            loicdi/website:push-on-master
+      - name: Launch Docker container
+          uses: docker/cli-action@v2
+          with:
+            command: run
+            args: |
+              -d
+              -p 8081:80
+              --name website
+              loicdi/website:push-on-master

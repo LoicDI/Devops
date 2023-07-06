@@ -49,11 +49,11 @@ jobs:
           push: true
           tags: loicdi/website:push-on-master
 
-    # Deploy project
-    deploy-project:
-      needs: build-app
-      runs-on: ubuntu-latest
+  # Deploy project
+  deploy-project:
+    needs: build-app
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Deploy project
-          run: echo "Deploy project"
+    steps:
+      - name: Deploy project
+        run: echo "Deploy project"

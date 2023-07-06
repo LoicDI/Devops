@@ -52,6 +52,9 @@ jobs:
       - name: Deploy project
         run: echo "Deploy project"
 
+      - name: Pull Docker image
+        run: docker pull loicdi/website:push-on-master
+
       - name: Launch Docker container
         run: |
           docker run -d -p 8081:80 --name website loicdi/website:push-on-master

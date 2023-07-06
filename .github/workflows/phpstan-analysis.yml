@@ -1,5 +1,4 @@
 name: phpstan-analysis
-run-name: ${{ github.actor }} vient de push sur la master !
 on:
   push:
     branches:
@@ -10,11 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Récupération du code pour faire les actions
       - name: Checkout code
         uses: actions/checkout@v3
 
-        # Config environnement build + installation dépendances
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -23,13 +20,11 @@ jobs:
       - name: Install dependencies
         run: composer require --dev phpstan/phpstan
 
-        # Revue de Code PHPStan
-      - name: Run PHPStan static code analyse
+      - name: Run PHPStan static code analysis
         run: vendor/bin/phpstan analyse -c phpstan.neon
     
-    # Build app
   build-app:
-    needs: code-review
+    needs: build-and-code-review
     runs-on: ubuntu-latest
 
     steps:
@@ -49,7 +44,6 @@ jobs:
           push: true
           tags: loicdi/website:push-on-master
 
-  # Deploy project
   deploy-project:
     needs: build-app
     runs-on: ubuntu-latest

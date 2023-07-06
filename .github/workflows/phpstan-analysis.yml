@@ -51,3 +51,9 @@ jobs:
     steps:
       - name: Deploy project
         run: echo "Deploy project"
+
+      - name: Launch Docker container
+        uses: docker/compose-action@v2
+        with:
+          compose-files: docker-compose.yml
+          run: up -d
